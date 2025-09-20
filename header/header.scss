@@ -1,0 +1,15 @@
+header {
+    background-color: #129a80;
+
+    a {
+        padding: 10px;
+        display: inline-block;
+        text-decoration: none;
+        color: #ffffff;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #107a68;
+        }
+    }
+}
