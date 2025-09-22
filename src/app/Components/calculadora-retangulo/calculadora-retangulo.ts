@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-calculadora-retangulo',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './calculadora-retangulo.html',
   styleUrl: './calculadora-retangulo.scss'
 })

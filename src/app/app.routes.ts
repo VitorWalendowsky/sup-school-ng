@@ -5,7 +5,7 @@ import { CalculadoraRetangulo } from './Components/calculadora-retangulo/calcula
 
 export const routes: Routes = [
     {path: "calculadora", component: Calculadora},
-    {path: "lista-pessoas", component: ListaPessoas}
+    {path: "lista-pessoas", component: ListaPessoas},
     {path: "calculadora-retangulo", component: CalculadoraRetangulo}
     
 ];
