@@ -68,7 +68,7 @@ export class CadastroAluno {
       return [];
     }
     let alunos: Aluno[] = JSON.parse(alunosDoLocalStorage);
-    return alunos;
+    return alunos;    
   }
 
   calcularMedia(): number {
