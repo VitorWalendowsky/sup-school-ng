@@ -21,6 +21,9 @@
             <td>{{aluno.media.toFixed(2).replace(".",",")}}</td>
             <td>{{aluno.frequencia}}</td>
             <td>{{aluno.status}}</td>
+            <td>
+              <button (click)="apagar(aluno)">Apagar</button>
+            </td>
         </tr>
     }
   </tbody>

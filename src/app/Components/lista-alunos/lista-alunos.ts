@@ -35,4 +35,17 @@ export class ListaAlunosComponent {
     let alunos: Aluno[] = JSON.parse(alunosDoLocalStorage);
     return alunos;
   }
-}
+    apagar(aluno: Aluno): void {
+      let indiceParaApagar = this.alunos.indexOf(aluno);
+      this.alunos.splice(indiceParaApagar, 1);
+      this.salvarLocalStorage();
+    }
+
+  salvarLocalStorage(): void {
+    let alunosString = JSON.stringify(this.alunos);
+    localStorage.setItem('alunos', alunosString);
+  }
+  
+  }
+
+
