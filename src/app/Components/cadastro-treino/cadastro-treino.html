@@ -1,0 +1,51 @@
+<div class="container">
+  <h2>Cadastro de Treino</h2>
+  <form (ngSubmit)="salvarTreino()" #treinoForm="ngForm">
+
+    <label>Nome do Aluno:</label>
+    <input type="text" [(ngModel)]="treino.nome" name="nome" required />
+
+    <label>Idade:</label>
+    <input type="number" [(ngModel)]="treino.idade" name="idade" required />
+
+    <label>Peso (kg):</label>
+    <input type="number" [(ngModel)]="treino.peso" name="peso" required />
+
+    <label>Altura (cm):</label>
+    <input type="number" [(ngModel)]="treino.altura" name="altura" required />
+
+    <label>Objetivo do Treino:</label>
+    <input type="text" [(ngModel)]="treino.objetivo" name="objetivo" required />
+
+    <h3>Exercícios</h3>
+    <div class="exercicio" *ngFor="let exercicio of treino.exercicios; let i = index">
+      <label>Exercício {{ i + 1 }}:</label>
+      <input type="text" [(ngModel)]="treino.exercicios[i].nome" name="exercicio{{i}}" placeholder="Nome do exercício" required />
+
+      <input type="number" [(ngModel)]="treino.exercicios[i].series" name="series{{i}}" placeholder="Séries" required />
+
+      <input type="number" [(ngModel)]="treino.exercicios[i].repeticoes" name="repeticoes{{i}}" placeholder="Repetições" required />
+
+      <button type="button" class="btn-remove" (click)="removerExercicio(i)">Remover</button>
+    </div>
+
+    <button type="button" class="btn-add" (click)="adicionarExercicio()">+ Adicionar Exercício</button>
+
+    <button type="submit">{{ editIndex !== null ? 'Atualizar Treino' : 'Salvar Treino' }}</button>
+  </form>
+
+  <hr />
+
+  <h3>Treinos Salvos</h3>
+  <div *ngFor="let t of treinosSalvos; let i = index" class="treino-card">
+    <p><strong>{{t.nome}}</strong> - {{t.objetivo}}</p>
+    <p>Idade: {{t.idade}} | Peso: {{t.peso}}kg | Altura: {{t.altura}}cm</p>
+    <ul>
+      <li *ngFor="let ex of t.exercicios">
+        {{ex.nome}} - {{ex.series}}x{{ex.repeticoes}}
+      </li>
+    </ul>
+    <button class="btn-edit" (click)="editarTreino(i)">Editar</button>
+    <button class="btn-remove" (click)="removerTreino(i)">Excluir</button>
+  </div>
+</div>
