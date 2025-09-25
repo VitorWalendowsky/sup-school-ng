@@ -18,19 +18,22 @@
     <input type="text" [(ngModel)]="treino.objetivo" name="objetivo" required />
 
     <h3>Exercícios</h3>
-    <div class="exercicio" *ngFor="let exercicio of treino.exercicios; let i = index">
-      <label>Exercício {{ i + 1 }}:</label>
-      <input type="text" [(ngModel)]="treino.exercicios[i].nome" name="exercicio{{i}}" placeholder="Nome do exercício" required />
+    @for ( exercicio of treino.exercicios;track exercicio; let i = $index){
 
-      <input type="number" [(ngModel)]="treino.exercicios[i].series" name="series{{i}}" placeholder="Séries" required />
-
-      <input type="number" [(ngModel)]="treino.exercicios[i].repeticoes" name="repeticoes{{i}}" placeholder="Repetições" required />
-
-      <button type="button" class="btn-remove" (click)="removerExercicio(i)">Remover</button>
-    </div>
-
-    <button type="button" class="btn-add" (click)="adicionarExercicio()">+ Adicionar Exercício</button>
-
+      <div class="exercicio" >
+        <label>Exercício {{ i + 1 }}:</label>
+        <input type="text" [(ngModel)]="treino.exercicios[i].nome" name="exercicio{{i}}" placeholder="Nome do exercício" required />
+        
+        <input type="number" [(ngModel)]="treino.exercicios[i].series" name="series{{i}}" placeholder="Séries" required />
+        
+        <input type="number" [(ngModel)]="treino.exercicios[i].repeticoes" name="repeticoes{{i}}" placeholder="Repetições" required />
+        
+        <button type="button" class="btn-remove" (click)="removerExercicio(i)">Remover</button>
+      </div>
+    }
+      
+      <button type="button" class="btn-add" (click)="adicionarExercicio()">+ Adicionar Exercício</button>
+      
     <button type="submit">{{ editIndex !== null ? 'Atualizar Treino' : 'Salvar Treino' }}</button>
   </form>
 
