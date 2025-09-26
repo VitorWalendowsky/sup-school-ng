@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Importação correta do Router
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 interface Aluno {
@@ -17,68 +17,109 @@ interface Aluno {
   selector: 'app-cadastro-aluno',
   imports: [FormsModule],
   templateUrl: './cadastro-aluno.html',
-  styleUrls: ['./cadastro-aluno.scss'], // Corrigido de styleUrl para styleUrls
+  styleUrls: ['./cadastro-aluno.scss'],
+  standalone: true // Se você estiver usando Angular standalone components
 })
 export class CadastroAluno {
-  alunos: Aluno[] = []; // Inicializando o array
+  alunos: Aluno[] = [];
+
   nome: string = '';
   nota1?: number;
   nota2?: number;
   nota3?: number;
   frequencia?: number;
 
-  constructor(private router: Router) {
+  idEditar?: string;
+
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
     this.alunos = this.carregarAlunosLocalStorage();
+    const idParaEditar = this.activatedRoute.snapshot.paramMap.get('id');
+    if (idParaEditar !== null) {
+      this.idEditar = idParaEditar;
+      this.preencherCamposParaEditar();
+    }
   }
 
-  // Métodos
+  preencherCamposParaEditar(): void {
+    if (this.idEditar) {
+      const aluno = this.alunos.find(a => a.id === this.idEditar);
+      if (aluno) {
+        this.nome = aluno.nome;
+        this.nota1 = aluno.nota1;
+        this.nota2 = aluno.nota2;
+        this.nota3 = aluno.nota3;
+        this.frequencia = aluno.frequencia;
+      }
+    }
+  }
 
   salvar(): void {
-    if (this.nome && this.nota1 !== undefined && this.nota2 !== undefined && this.nota3 !== undefined && this.frequencia !== undefined) {
-      // Variáveis locais
-      let media = this.calcularMedia();
-      let status = this.descobrirStatus(media);
+    const media = this.calcularMedia();
+    const status = this.descobrirStatus(media);
 
-      let aluno: Aluno = {
-        id: crypto.randomUUID(),
-        nome: this.nome,
-        nota1: this.nota1,
-        nota2: this.nota2,
-        nota3: this.nota3,
-        frequencia: this.frequencia,
-        media: media,
-        status: status,
-      };
-
-      this.alunos.push(aluno);
-
-      this.salvarLocalStorage();
-      this.router.navigate(['/alunos']);
+    if (this.idEditar === undefined) {
+      this.cadastrarAluno(media, status);
     } else {
-      console.error('Por favor, preencha todos os campos obrigatórios.');
+      this.editarAluno(media, status);
+    }
+
+    this.salvarLocalStorage();
+    this.router.navigate(['/alunos']);
+  }
+
+  cadastrarAluno(media: number, status: string): void {
+    const aluno: Aluno = {
+      id: crypto.randomUUID(),
+      nome: this.nome,
+      nota1: this.nota1!,
+      nota2: this.nota2!,
+      nota3: this.nota3!,
+      frequencia: this.frequencia!,
+      media: media,
+      status: status
+    };
+    this.alunos.push(aluno);
+  }
+
+  editarAluno(media: number, status: string): void {
+    if (this.idEditar) {
+      const index = this.alunos.findIndex(a => a.id === this.idEditar);
+      if (index !== -1) {
+        this.alunos[index] = {
+          ...this.alunos[index],
+          nome: this.nome,
+          nota1: this.nota1!,
+          nota2: this.nota2!,
+          nota3: this.nota3!,
+          frequencia: this.frequencia!,
+          media: media,
+          status: status
+        };
+      }
     }
   }
 
   salvarLocalStorage(): void {
-    let alunosString = JSON.stringify(this.alunos);
-    localStorage.setItem('alunos', alunosString);
+    localStorage.setItem('alunos', JSON.stringify(this.alunos));
   }
 
   carregarAlunosLocalStorage(): Aluno[] {
-    let alunosDoLocalStorage = localStorage.getItem('alunos');
-    if (alunosDoLocalStorage === null) {
-      return [];
-    }
-    let alunos: Aluno[] = JSON.parse(alunosDoLocalStorage);
-    return alunos;
+    const dados = localStorage.getItem('alunos');
+    return dados ? JSON.parse(dados) : [];
   }
 
   calcularMedia(): number {
-    // Garantir que todas as notas são válidas antes de calcular
-    if (this.nota1 !== undefined && this.nota2 !== undefined && this.nota3 !== undefined) {
+    if (
+      this.nota1 !== undefined &&
+      this.nota2 !== undefined &&
+      this.nota3 !== undefined
+    ) {
       return (this.nota1 + this.nota2 + this.nota3) / 3;
     }
-    return 0; // Caso alguma nota não esteja definida, retornar 0
+    return 0;
   }
 
   descobrirStatus(media: number): string {

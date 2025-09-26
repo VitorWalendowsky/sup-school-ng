@@ -13,6 +13,7 @@ export const routes: Routes = [
     {path: "alunos", component: ListaAlunosComponent},
   {path: "alunos/cadastro", component: CadastroAluno},
   { path: '', redirectTo: 'cadastro-treino', pathMatch: 'full' },
-  { path: 'cadastro-treino', component: CadastroTreino }
+  { path: 'cadastro-treino', component: CadastroTreino },
+  {path: "aluno/editar/:id", component: CadastroAluno}
 ];
 //SPA: Single Page Application

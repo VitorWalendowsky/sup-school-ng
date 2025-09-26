@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 interface Aluno {
   id: string;
@@ -23,7 +24,7 @@ export class ListaAlunosComponent {
 
   alunos: Aluno[];
 
-  constructor(){
+  constructor(private router:Router) {
     this.alunos = this.carregarAlunosLocalStorage();
   }
 
@@ -39,6 +40,10 @@ export class ListaAlunosComponent {
       let indiceParaApagar = this.alunos.indexOf(aluno);
       this.alunos.splice(indiceParaApagar, 1);
       this.salvarLocalStorage();
+    }
+
+    editar(aluno: Aluno): void {
+      this.router.navigate([`/alunos/editar`, aluno.id]);
     }
 
   salvarLocalStorage(): void {
