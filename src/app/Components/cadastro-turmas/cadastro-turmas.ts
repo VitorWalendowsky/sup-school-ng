@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Router} from "@angular/router";
-import {FormsModule} from "@angular/forms";
+import { Router, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 interface Turma {
   id: string;
@@ -10,48 +10,43 @@ interface Turma {
 
 @Component({
   selector: 'app-cadastro-turmas',
-  imports: [FormsModule],
+  standalone: true, // se estiver usando Angular standalone components
+  imports: [FormsModule, RouterLink],
   templateUrl: './cadastro-turmas.html',
-  styleUrl: './cadastro-turmas.scss'
+  styleUrls: ['./cadastro-turmas.scss'] // Corrigido de styleUrl para styleUrls
 })
-
 export class CadastroTurmas {
-  turma: Turma[] = [];
+  turmas: Turma[] = [];
+
   nome: string = '';
   sigla: string = '';
-  aluno: any; // Declare the aluno property
 
-
-constructor(private router: Router) {
-  this.aluno = this.carregarTurmaLocalStorage();
-}
-
-salvar(): void {
-  if (this.nome && this.sigla) {
-    let turma: Turma = {
-      id: crypto.randomUUID(),
-      nome: this.nome,
-      sigla: this.sigla,
-    };
-
-    this.turma.push(turma);
-
-    this.salvarLocalStorage();
-    this.router.navigate(['/turmas']);
-  } else {
-    console.error('Por favor, preencha todos os campos obrigatórios.');
+  constructor(private router: Router) {
+    this.turmas = this.carregarTurmasLocalStorage();
   }
-}
+
+  salvar(): void {
+    if (this.nome.trim() && this.sigla.trim()) {
+      const turma: Turma = {
+        id: crypto.randomUUID(),
+        nome: this.nome,
+        sigla: this.sigla
+      };
+
+      this.turmas.push(turma);
+      this.salvarLocalStorage();
+      this.router.navigate(['/turmas']);
+    } else {
+      console.error('Por favor, preencha todos os campos obrigatórios.');
+    }
+  }
+
   salvarLocalStorage(): void {
-    localStorage.setItem('turma', JSON.stringify(this.turma));
-}
-
-carregarTurmaLocalStorage(): Turma[] {
-  let turmaDoLocalStorage = localStorage.getItem('turma');
-  if (turmaDoLocalStorage === null) {
-    return [];
+    localStorage.setItem('turmas', JSON.stringify(this.turmas));
   }
-  let turma: Turma[] = JSON.parse(turmaDoLocalStorage);
-  return turma;
-}
+
+  carregarTurmasLocalStorage(): Turma[] {
+    const dados = localStorage.getItem('turmas');
+    return dados ? JSON.parse(dados) : [];
+  }
 }

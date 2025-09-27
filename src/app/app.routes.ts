@@ -5,6 +5,7 @@ import { CalculadoraRetangulo } from './Components/calculadora-retangulo/calcula
 import { CadastroAluno } from './Components/cadastro-aluno/cadastro-aluno';
 import { ListaAlunosComponent } from './Components/lista-alunos/lista-alunos';
 import { CadastroTreino } from './Components/cadastro-treino/cadastro-treino';
+import { CadastroTurmas } from './Components/cadastro-turmas/cadastro-turmas';
 
 export const routes: Routes = [
     {path: "calculadora", component: Calculadora},
@@ -14,6 +15,7 @@ export const routes: Routes = [
   {path: "alunos/cadastro", component: CadastroAluno},
   { path: '', redirectTo: 'cadastro-treino', pathMatch: 'full' },
   { path: 'cadastro-treino', component: CadastroTreino },
-  {path: "aluno/editar/:id", component: CadastroAluno}
+  {path: "aluno/editar/:id", component: CadastroAluno},
+  {path: "aluno/editar/:id", component: CadastroTurmas}
 ];
 //SPA: Single Page Application

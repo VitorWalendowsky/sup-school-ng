@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {FormsModule} from "@angular/forms";
-import {RouterLink} from "@angular/router";
+import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 
 interface Turma {
   id: string;
@@ -10,23 +10,34 @@ interface Turma {
 
 @Component({
   selector: 'app-lista-turmas',
+  standalone: true, // se estiver usando standalone components
   imports: [FormsModule, RouterLink],
   templateUrl: './lista-turmas.html',
-  styleUrl: './lista-turmas.scss'
+  styleUrls: ['./lista-turmas.scss'] // Corrigido: styleUrl → styleUrls
 })
-export class ListaTurmas {
- turma: Turma[];
+export class ListaTurmasComponent {
 
-  constructor(){
-    this.turma = this.carregarTurmaLocalStorage();
+  turmas: Turma[];
+
+  constructor(private router: Router) {
+    this.turmas = this.carregarTurmasLocalStorage();
   }
 
-  carregarTurmaLocalStorage(): Turma[] {
-    let turmaDoLocalStorage = localStorage.getItem('turma');
-    if(turmaDoLocalStorage === null){
-      return [];
-    }
-    let turma: Turma[] = JSON.parse(turmaDoLocalStorage);
-    return turma;
+  carregarTurmasLocalStorage(): Turma[] {
+    const dados = localStorage.getItem('turmas');
+    return dados ? JSON.parse(dados) : [];
+  }
+
+  apagar(turma: Turma): void {
+    this.turmas = this.turmas.filter(t => t.id !== turma.id);
+    this.salvarLocalStorage();
+  }
+
+  editar(turma: Turma): void {
+    this.router.navigate(['/turmas/editar', turma.id]);
+  }
+
+  salvarLocalStorage(): void {
+    localStorage.setItem('turmas', JSON.stringify(this.turmas));
   }
 }
