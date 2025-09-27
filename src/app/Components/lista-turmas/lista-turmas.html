@@ -1,4 +1,5 @@
 <h2>Lista de Turmas</h2>
+<a routerLink="/turmas/cadastro">Cadastrar nova turma</a>
 
 <table>
   <thead>
@@ -9,15 +10,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let turma of turmas">
-      <td>{{ turma.nome }}</td>
-      <td>{{ turma.sigla }}</td>
-      <td>
-        <button (click)="editar(turma)">Editar</button>
-        <button (click)="apagar(turma)">Excluir</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    @for (turma of turmas; track turma.id; let i = $index) {
+      <tr>
+        <td>{{ i }}</td>
+        <td>{{ turma.nome }}</td>
+        <td>{{ turma.sigla }}</td>
+        <td>
+          <button (click)="editar(turma)">Editar</button>
+          <button (click)="apagar(turma)">Excluir</button>
+        </td>
+      </tr>
+    }
+  </tbody>  
 
-<a routerLink="/turmas/cadastro">Cadastrar nova turma</a>
+

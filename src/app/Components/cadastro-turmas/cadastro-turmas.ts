@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 interface Turma {
@@ -11,7 +11,7 @@ interface Turma {
 @Component({
   selector: 'app-cadastro-turmas',
   standalone: true, // se estiver usando Angular standalone components
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule],
   templateUrl: './cadastro-turmas.html',
   styleUrls: ['./cadastro-turmas.scss'] // Corrigido de styleUrl para styleUrls
 })
