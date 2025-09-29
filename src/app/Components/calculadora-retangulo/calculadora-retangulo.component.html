@@ -1,0 +1,16 @@
+<div class="valores">
+    <label for="campo-base">Valor da Base</label>
+    <input type="number" min="1" id="campo-base" placeholder="Digite o valor da base" [(ngModel)]="base">
+</div>
+
+<div class="valores">
+    <label for="campo-altura">Valor da Altura</label>
+    <input type="number" min="1" id="campo-altura" placeholder="Digite o valor da altura" [(ngModel)]="altura">
+</div>
+
+<button id="btn" (click)="calcular()">Calcular</button>
+
+<div class="resultado">
+    <h1>Resultado</h1>
+    <p>Valor da área do retângulo (cm² ou  m² ou  km²): {{area}}</p>
+</div>

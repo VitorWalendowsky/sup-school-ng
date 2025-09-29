@@ -1,0 +1,18 @@
+<label for="campo-nota1">Nota 1:</label>
+<input type="number" id="campo-nota1" min="1" max="10" [(ngModel)]="nota1">
+
+<label for="campo-nota2">Nota 2:</label>
+<input type="number" id="campo-nota2" min="1" max="10" [(ngModel)]="nota2">
+
+<label for="campo-nota3">Nota 3:</label>
+<input type="number" id="campo-nota3" min="1" max="10" [(ngModel)]="nota3">
+
+<button (click)="calcular()" id="btn">Calcular</button>
+
+<div>
+    <h1>Resultado Final do Aluno:</h1>
+
+    <p>{{media?.toFixed(2)}}</p>
+
+    <p id="mensagem">{{mensagem}}</p>
+</div>

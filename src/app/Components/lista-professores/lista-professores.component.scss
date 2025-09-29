@@ -1,0 +1,96 @@
+/* ===== Tema Dark Purple ===== */
+:host {
+    display: block;
+    background-color: #1a1528; /* Roxo bem escuro */
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #e5e5f7; /* Texto quase branco */
+}
+
+/* Link de cadastro */
+a {
+    display: inline-block;
+    padding: 0.75rem 1.25rem; /* Aumentado o espaçamento para mais destaque */
+    background: #6d28d9; /* Roxo vibrante */
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+    text-align: center; /* Centraliza o texto */
+}
+
+a:hover {
+    background: #9333ea; /* Roxo mais claro no hover */
+}
+
+/* Botão de Cadastro */
+.botao-cadastro {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem; /* Adicionando espaço abaixo do botão */
+}
+
+/* Estilo da tabela */
+table {
+    width: 100%;
+    margin-top: 2rem;
+    border-collapse: collapse;
+    background: #2d1b4e; /* Roxo médio */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+thead {
+    background: #4c1d95; /* Roxo forte */
+}
+
+th {
+    text-align: left;
+    padding: 1rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    color: #c4b5fd; /* Roxo claro */
+    text-transform: uppercase; /* Deixa os cabeçalhos em maiúsculas */
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:nth-child(even) {
+    background: #372356; /* Roxo bem escuro para linhas pares */
+}
+
+tbody tr:hover {
+    background: #5b21b6; /* Roxo vibrante no hover */
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.9rem;
+    color: #e9d5ff; /* Texto roxo claro */
+}
+
+/* Coluna de status destacada */
+td:nth-child(4) {
+    font-weight: 600;
+}
+
+td:nth-child(4):contains("Aprovado") {
+    color: #34d399; /* Verde para aprovado */
+}
+
+td:nth-child(4):contains("Reprovado") {
+    color: #f87171; /* Vermelho para reprovado */
+}
+
+/* Estilo do botão "Apagar" */
+button {
+    background-color: #e11d48; /* Vermelho vibrante */
+    color: #fff;
+    border: none;
+}

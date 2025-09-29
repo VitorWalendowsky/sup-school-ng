@@ -1,0 +1,23 @@
+input {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+#btn {
+    padding: 4px;
+    background-color: #6d28d9;
+    border: #000 solid 2px;
+    border-radius: 4px;
+    color: #fff;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #9333ea;
+    }
+}
+
+#mensagem {
+    font-weight: bold;
+    font-size: 21px;
+}

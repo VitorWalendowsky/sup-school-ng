@@ -1,0 +1,12 @@
+<div>
+    <label for="campo-nome">Nome da Turma:</label>
+    <input type="text" id="campo-nome" placeholder="DIgite o nome da turma aqui." [(ngModel)]="nome">
+</div>
+<div>
+    <label for="campo-sigla">Sigla da Turma:</label>
+    <input type="text" id="campo-sigla" placeholder="Digite a sigla da turma." [(ngModel)]="sigla">
+</div>
+
+<div class="botao-cadastro">
+    <button (click)="salvarTurma()">Salvar</button>
+</div>

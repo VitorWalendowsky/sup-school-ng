@@ -1,0 +1,90 @@
+/* ===== Tema Dark Purple - Formulário ===== */
+:host {
+    display: block;
+    background-color: #1a1528;
+    /* Roxo bem escuro */
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #e5e5f7;
+}
+
+/* Containers dos campos */
+div {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #c4b5fd;
+    /* Roxo claro */
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"] {
+    background: #2d1b4e;
+    /* Roxo médio */
+    border: 1px solid #4c1d95;
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    color: #f5f3ff;
+    /* Texto quase branco */
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #9333ea;
+    /* Roxo vivo */
+    box-shadow: 0 0 6px rgba(147, 51, 234, 0.6);
+}
+
+/* Botão */
+button {
+    padding: 0.75rem 1.5rem;
+    background: #6d28d9;
+    /* Roxo vibrante */
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: #9333ea;
+    /* Roxo mais claro no hover */
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* Remove setas no Chrome, Edge, Safari e Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Remove setas no Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.botao-cadastro {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+}

@@ -1,0 +1,20 @@
+<div style="margin-top: 10px;">
+    <label for="campo-nome">Nome</label>
+    <input type="text" id="campo-nome" [(ngModel)]="nome">
+    <label for="campo-sobrenome">Sobrenome</label>
+    <input type="text" id="campo-sobrenome" [(ngModel)]="sobrenome">
+    <button (click)="adicionar()">Adicionar</button>
+  </div>
+  
+  <div>
+    <span>Nome Completo: {{nome}} {{sobrenome}}</span>
+  </div>
+  
+  <div>
+    <h2>Lista de Pessoas</h2>
+    <ul>
+      @for(pessoa of pessoas; track pessoa){
+        <li>{{pessoa}} <button (click)="apagar(pessoa)">❌</button></li>
+      }
+    </ul>
+  </div>

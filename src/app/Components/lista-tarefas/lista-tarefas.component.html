@@ -1,0 +1,13 @@
+<label for="campo-tarefa">Digite a tarefa para fazer:</label>
+<input type="text" id="campo-tarefa" [(ngModel)]="tarefa">
+<button class="btn" (click)="adicionar()">Adicionar</button>
+
+<div class="apresentar-lista">
+    <h2>Lista de Tarefas:
+        <ul>
+            @for (tarefa of tarefas; track tarefa) {
+            <li>{{tarefa}} <button class="btn" (click)="apagar(tarefa)">Apagar</button></li>
+            }
+        </ul>
+    </h2>
+</div>
