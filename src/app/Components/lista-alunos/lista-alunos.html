@@ -1,7 +1,7 @@
 <p>lista-alunos works!</p>
 
 <div class="botão-cadastro">
-<a routerLink="/alunos/cadastro">Cadastro</a>
+  <botao routerLink="/alunos/cadastro" texto="Cadastro" tipo="sucesso"></botao>
 </div>
 
 <table>
@@ -22,8 +22,8 @@
             <td>{{aluno.frequencia}}</td>
             <td>{{aluno.status}}</td>
             <td>
-              <button (click)="editar(aluno)">Editar</button>
-              <button (click)="apagar(aluno)">Apagar</button>
+              <botao texto="Editar " (click)="editar(aluno)" tipo="aviso"></botao>
+              <botao texto="Apagar " (click)="apagar(aluno)" tipo="perigo"></botao>
             </td>
         </tr>
     }

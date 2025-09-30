@@ -1,12 +1,15 @@
 import { Component, Input} from '@angular/core';
 
+
+type tipos = "aviso" | "perigo" | "sucesso" | "padrão";
+
 @Component({
-  selector: 'app-botao',
+  selector: 'botao',
   imports: [],
   templateUrl: './botao.component.html',
   styleUrl: './botao.component.scss'
 })
 export class BotaoComponent {
   @Input() texto: string = "";
-  @Input() tipo: string = "";
+  @Input() tipo: tipos = "padrão";
 }
