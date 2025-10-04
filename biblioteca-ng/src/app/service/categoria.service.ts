@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CategoriaResponse } from '../models/categoria.dto';
+import { CategoriaCadastroRequest, CategoriaResponse } from '../models/categoria.dto';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,5 +14,12 @@ export class CategoriaService {
 
   getAll() : Observable<CategoriaResponse[]> {
     return this.httpClient.get<CategoriaResponse[]>(this.url);
+  }
+  create(form: CategoriaCadastroRequest): Observable<void>{
+    return this.httpClient.post<void>(this.url, form);
+  }
+  delete(id: number): Observable<void>{
+    const urlApagar = `${this.url}/${id}`;
+    return this.httpClient.delete<void>(urlApagar);
   }
 }
