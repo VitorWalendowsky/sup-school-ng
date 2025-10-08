@@ -3,20 +3,20 @@ import { MenuItem } from 'primeng/api';
 import { Menubar } from 'primeng/menubar';
 
 @Component({
-  selector: 'navibar',
+  selector: 'navbar',
   imports: [Menubar],
-  templateUrl: './navibar.html',
-  styleUrl: './navibar.scss',
+  templateUrl: './navbar.html',
+  styleUrl: './navbar.scss'
 })
-export class Navibar {
+export class Navbar {
   items: MenuItem[] | undefined;
 
   ngOnInit() {
     this.items = [
       {
-        label: 'Inicio',
+        label: 'Início',
         icon: 'pi pi-home',
-        routerLink: '/',
+        routerLink: "/"
       },
       {
         label: 'Cadastros',
@@ -25,22 +25,24 @@ export class Navibar {
           {
             label: 'Autores',
             icon: 'pi pi-users',
+            routerLink: "autores",
           },
           {
             label: 'Categorias',
             icon: 'pi pi-list',
-            routerLink: "categorias",
+            routerLink: "categorias"
           },
           {
             label: 'Livros',
-            icon: 'pi pi-book',
+            icon: 'pi pi-book'
           },
           {
             label: 'Usuários',
-            icon: 'pi pi-user',
+            icon: 'pi pi-user'
           },
-        ],
+        ]
       },
-        ];
+    ]
   }
+
 }
