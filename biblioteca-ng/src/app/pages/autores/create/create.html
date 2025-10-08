@@ -1,0 +1,33 @@
+<div class="p-5">
+    <div class="flex w-full mw-full justify-content-evenly gap-2 mb-2">
+        <div class="flex-grow-1">
+            <label for="campo-nome">Nome <span class="text-red-500">*</span></label>
+            <input type="text" pInputText [(ngModel)]="form.nome" id="campo-nome" fluid />
+        </div>
+        <div class="flex-grow-1">
+            <label for="campo-nacionalidade">Nacionalidade <span class="text-red-500">*</span></label>
+
+             <p-select 
+                [options]="nacionalidades" 
+                [(ngModel)]="form.nacionalidade"      
+                optionLabel="nome" 
+                optionValue="nome"
+                placeholder="Selecione a nacionalidade" 
+                class="w-full md:w-56" />
+        </div>
+    </div>
+
+    <div class="flex flex-column">
+         <label for="campo-data-nascimento">Data de Nascimento <span class="text-red-500">*</span></label>
+        <p-datepicker 
+            [(ngModel)]="form.dataNascimento" 
+            dateFormat="dd/mm/yy"
+            id="data-nascimento"
+            />
+    </div>
+
+
+    <div class="flex justify-content-end mt-2">
+        <p-button label="Salvar" (click)="salvar()" icon="pi pi-save" />
+    </div>
+</div>

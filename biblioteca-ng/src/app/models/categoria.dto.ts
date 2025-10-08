@@ -14,6 +14,7 @@ export interface CategoriaCadastroRequest{
     nome: string;
 }
 
+
 export interface CategoriaEditarRequest{
     nome: string;
 }
