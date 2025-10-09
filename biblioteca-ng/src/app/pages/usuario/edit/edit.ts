@@ -8,7 +8,7 @@ import { Usuario as Usuarios } from '../../../services/usuario.service';
   templateUrl: './edit.html',
   styleUrls: ['./edit.scss']
 })
-export class UsuarioEditComponent implements OnInit {
+export class UsuarioEdit implements OnInit {
   usuario: Usuarios= { id: 0, nome: '', email: '', telefone: '', endereco: '' };
 
   constructor(
