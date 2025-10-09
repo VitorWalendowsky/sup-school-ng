@@ -11,19 +11,19 @@
                 <th></th>
             </tr>
         </ng-template>
-        <ng-template #body let-categoria>
+        <ng-template #body let-usuarios>
             <tr>
-                <td>{{ categoria.id }}</td>
-                <td>{{ categoria.nome }}</td>
+                <td>{{ usuarios.id }}</td>
+                <td>{{ usuarios.nome }}</td>
                 <td class="flex gap-2">
                     <p-button
                         label="Editar"
                         icon="pi pi-pencil"
                         severity="warn"
-                        routerLink="/usuario/editar/{{categoria.id}}"/>
+                        routerLink="/usuarios/editar/{{usuarios.id}}"/>
 
                     <p-button 
-                        (click)="deleteUsuario(categoria.id)" 
+                        (click)="deleteUsuario(usuarios.id)" 
                         label="Apagar" 
                         icon="pi pi-trash" 
                         outlined severity="danger" /> 
