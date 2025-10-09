@@ -1,0 +1,16 @@
+<h2>Editar Usuário</h2>
+<form (ngSubmit)="updateUsuario()">
+  <label>Nome</label>
+  <input type="text" [(ngModel)]="usuario.nome" name="nome" required>
+
+  <label>Email</label>
+  <input type="email" [(ngModel)]="usuario.email" name="email" required>
+
+  <label>Telefone</label>
+  <input type="text" [(ngModel)]="usuario.telefone" name="telefone">
+
+  <label>Endereço</label>
+  <input type="text" [(ngModel)]="usuario.endereco" name="endereco">
+
+  <button type="submit">Atualizar</button>
+</form>
