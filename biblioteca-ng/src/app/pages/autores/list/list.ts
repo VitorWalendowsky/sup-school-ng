@@ -5,7 +5,6 @@ import { TableModule } from 'primeng/table';
 import { AutorService } from '../../../services/autor.service';
 import { ButtonModule } from 'primeng/button';
 import { RouterLink } from '@angular/router';
-import { ListBoxStyle } from 'primeng/listbox';
 
 @Component({
   selector: 'app-list',

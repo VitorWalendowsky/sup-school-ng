@@ -1,8 +1,11 @@
-<div>
-    <label for="campo-nome">Nome</label>
-    <input type="text" pInputText [(ngModel)]="form.nome" id="campo-nome" />
-</div>
+<div class="p-2">
 
-<div class="flex justify-content-end mr-2 mt-2">
-    <p-button label="Salvar" (click)="salvar()" icon="pi pi-save" />
+    <div>
+        <label for="campo-nome">Nome</label>
+        <input type="text" pInputText [(ngModel)]="form.nome" id="campo-nome" fluid/>
+    </div>
+    
+    <div class="flex justify-content-end mr-2 mt-2">
+        <p-button label="Salvar" (click)="salvar()" icon="pi pi-save" />
+    </div>
 </div>

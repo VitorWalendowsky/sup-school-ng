@@ -235,3 +235,9 @@
     - Abrir o Network das Ferramentas do Desenvolvedor
     - Botão de Apagar
     - Validar que apagou e atualizou a lista
+
+src/app/pages/livros
+
+ng g c create --skip-tests --inline-style --inline-template --flat
+ng g c edit --skip-tests --inline-style --inline-template --flat
+ng g c list --skip-tests --inline-style --inline-template --flat
