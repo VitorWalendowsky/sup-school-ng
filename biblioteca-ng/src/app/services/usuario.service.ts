@@ -1,20 +1,33 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UsuarioCadastroRequest } from '../models/usuario.dto';
-import { UsuarioResponse } from '../models/usuario.dto';
+import { AutorResponse } from '../models/autor.dto';
+import { UsuarioResponse, UsuarioCadastroRequest } from '../models/usuario.dto';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
+export class UsuarioService{
+  url = "https://api.franciscosensaulas.com/api/v1/biblioteca/usuarios"
 
-  private apiUrl = '/api/usuarios'; // Sua URL de API
+  constructor(private httpClient: HttpClient) { }
 
-  constructor(private http: HttpClient) {}
+  getAll(): Observable<UsuarioResponse[]> {
+    return this.httpClient.get<UsuarioResponse[]>(this.url);
+  }
 
-  // Método para criar um usuário
-  create(usuario: UsuarioCadastroRequest): Observable<UsuarioResponse> {
-    return this.http.post<UsuarioResponse>(this.apiUrl, usuario);
+  create(form: UsuarioCadastroRequest): Observable<void> {
+    return this.httpClient.post<void>(this.url, form);
+  }
+
+  delete(id: number): Observable<void> {
+    const urlApagar = `${this.url}/${id}`;
+    return this.httpClient.delete<void>(urlApagar);
+  }
+
+  getById(id: number): Observable<UsuarioResponse> {
+    const urlConsultarPorId = `${this.url}/${id}`;
+    return this.httpClient.get<UsuarioResponse>(urlConsultarPorId);
   }
 }
