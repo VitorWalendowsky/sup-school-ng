@@ -8,6 +8,7 @@ import { Menubar } from 'primeng/menubar';
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })
+
 export class Navbar {
   items: MenuItem[] | undefined;
 
@@ -25,25 +26,46 @@ export class Navbar {
           {
             label: 'Autores',
             icon: 'pi pi-users',
-            routerLink: "autores",
+            routerLink: 'autores'
           },
           {
             label: 'Categorias',
             icon: 'pi pi-list',
-            routerLink: "categorias"
+            routerLink: 'categorias'
           },
           {
             label: 'Livros',
             icon: 'pi pi-book',
-            routerLink: "livros"
+            routerLink: 'livros'
           },
           {
             label: 'Usuários',
-            icon: 'pi pi-user'
+            icon: 'pi pi-user',
+            routerLink: 'usuarios'
+          },
+          {
+            label: 'Empréstimo',
+            icon: 'pi pi-barcode',
+            routerLink: 'emprestimos'
           },
         ]
       },
+      {
+        label: 'Escola',
+        icon: 'pi pi-pencil',
+        items: [
+          {
+            label: 'Alunos',
+            icon: 'pi pi-graduation-cap',
+            routerLink: 'alunos'
+          },
+          {
+            label: 'Cursos',
+            icon: 'pi pi-address-book',
+            routerLink: 'cursos'
+          }
+        ]
+      }
     ]
   }
-
 }

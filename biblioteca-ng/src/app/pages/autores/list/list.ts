@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AutorResponse } from '../../../models/autor.dto';
-import { CommonModule } from '@angular/common';
+import { AutorResponse } from '../../../models/autor.dtos';
 import { TableModule } from 'primeng/table';
+import { CommonModule } from '@angular/common';
 import { AutorService } from '../../../services/autor.service';
 import { ButtonModule } from 'primeng/button';
 import { RouterLink } from '@angular/router';
@@ -26,17 +26,17 @@ export class AutorList {
       next: autores => this.autores = autores,
       error: erro => {
         alert("Não foi possível carregar os autores");
-        console.error("Não foi possível carregar os autores: " + erro)
+        console.error("Ocorreu um erro ao carregar os autores: " + erro)
       }
-    })
+    });
   }
 
   apagar(id: number) {
-    this.autorService.delete(id).subscribe({
-      next: _ => this.carregarAutores(),
+    this.autorService.delete(id).subscribe ({
+      next: sucesso => this.carregarAutores(),
       error: erro => {
-        alert("Não foi possível apagar a autor")
-        console.error("Ocorreu um erro ao apagar as autor: " + erro)
+        alert("Não foi possível apagar o autor.");
+        console.error("Ocorreu um erro ao apagar o autor: " + erro);
       }
     })
   }

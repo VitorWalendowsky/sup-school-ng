@@ -1,0 +1,17 @@
+<div class="flex flex-column p-3">
+    <label class="mb-2" for="campo-nome">Nome Completo: <span class="text-red-500">*</span></label>
+    <input type="text" pInputText [(ngModel)]="form.nome" id="campo-nome" />
+
+    <label class="mb-2" for="campo-email">E-Mail: <span class="text-red-500">*</span></label>
+    <input type="email" pInputText [(ngModel)]="form.email" />
+
+    <label class="mb-2" for="campo-telefone">Telefone: <span class="text-red-500">*</span></label>
+    <p-inputmask mask="(999) 99999-9999" [(ngModel)]="form.telefone" placeholder="(DDD) 90000-0000" />
+
+    <label class="mb-2" for="campo-endereco">Endereço: <span class="text-red-500">*</span></label>
+    <input type="text" pInputText [(ngModel)]="form.endereco" />
+    
+    <div class="flex justify-content-end mt-2">
+        <p-button label="Salvar" (click)="salvar()"></p-button>
+    </div>
+</div>

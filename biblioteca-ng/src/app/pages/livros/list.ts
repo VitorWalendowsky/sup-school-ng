@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Button } from 'primeng/button';
 import { Table, TableModule } from 'primeng/table';
-import { LivroResponse } from '../../models/livro.dto';
+import { LivroResponse } from '../../models/livro.dtos';
 import { LivroService } from '../../services/livro.service';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
@@ -92,7 +92,7 @@ import { DrawerModule } from 'primeng/drawer';
                     
               </td>
               <td class="flex gap-2">
-                <p-button label="Editar" icon="pi pi-pencil" severity="warn" routerLink="/livroes/editar/{{livro.id}}" />
+                <p-button label="Editar" icon="pi pi-pencil" severity="warn" routerLink="/livros/editar/{{livro.id}}" />
 
                 <p-button (click)="apagar(livro.id)" label="Apagar" icon="pi pi-trash" outlined severity="danger" />
               </td>
@@ -141,9 +141,7 @@ export class LivroList {
 
   apagar(id: number) {
     this.livroService.delete(id).subscribe({
-      // Sucesso: após deletar, atualiza a lista chamando o backend novamente.
       next: _ => this.carregarLivros(),
-      // Erro: avisa o usuário que não foi possível apagar.
       error: erro => {
         alert("Não foi possível apagar o livro")
         console.error("Ocorreu um erro ao apagar o livro: " + erro)

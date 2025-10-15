@@ -1,0 +1,27 @@
+<div class="flex mt-2 mb-2 justify-content-end">
+    <p-button label="Cadastrar" severity="info" icon="pi pi-plus" routerLink="cadastrar" />
+</div>
+
+<p-table [value]="alunos" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template #header>
+        <tr>
+            <th>ID</th>
+            <th>Nome Completo</th>
+            <th>CPF</th>
+            <th>Data de Nascimento</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-aluno>
+        <tr>
+            <td>{{ aluno.id }}</td>
+            <td>{{ aluno.nome }} {{aluno.sobrenome}}</td>
+            <td>{{ aluno.cpf }}</td>
+            <td>{{ aluno.dataNascimento | date: "dd/MM/yyyy"}}</td>
+            <td>
+                <p-button label="Editar" icon="pi pi-pencil" severity="warn" routerLink="/alunos/editar/{{aluno.id}}" />
+                <p-button label="Apagar" (click)="apagarAluno(aluno.id)" icon="pi pi-trash" outlined severity="danger"/>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

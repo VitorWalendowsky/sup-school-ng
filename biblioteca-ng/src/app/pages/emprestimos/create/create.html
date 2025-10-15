@@ -1,0 +1,22 @@
+<div class="flex flex-column p-2 fluid">
+    <label class="mb-2" for="campo-livro">Livro Para Empréstimo: <span class="text-red-500">*</span></label>
+    <p-select [options]="livros" [(ngModel)]="form.livroId" optionLabel="titulo" optionValue="id"
+        placeholder="Selecione o livro" class="w-full md:w-56" />
+
+    <label class="mb-2 mt-2" for="campo-usuario">Usuário: <span class="text-red-500">*</span></label>
+    <p-select [options]="usuarios" [(ngModel)]="form.usuarioId" optionLabel="nome" optionValue="id"
+        placeholder="Selecione o usuário" class="w-full md:w-56" />
+
+    <label class="mb-2 mt-2" for="campo-data-emprestimo">Data do Empréstimo: <span class="text-red-500">*</span></label>
+    <p-datepicker [(ngModel)]="form.dataEmprestimo" dateFormat="dd/mm/yy" />
+
+    <label class="mb-2 mt-2" for="campo-data-devolucao">Data para Devolução: <span class="text-red-500">*</span></label>
+    <p-datepicker [(ngModel)]="form.dataDevolucao" dateFormat="dd/mm/yy" />
+
+    <label class="mb-2 mt-2" for="campo-status">Status: <span class="text-red-500">*</span></label>
+    <input type="text" pInputText [(ngModel)]="form.status" />
+
+    <div class="flex justify-content-end mt-2">
+        <p-button label="Salvar" (click)="salvar()" />
+    </div>
+</div>

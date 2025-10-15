@@ -5,10 +5,20 @@ import { CategoriaEdit } from './pages/categorias/edit/edit';
 import { AutorList } from './pages/autores/list/list';
 import { AutorCreate } from './pages/autores/create/create';
 import { AutorEdit } from './pages/autores/edit/edit';
+import { AlunoList } from './pages/alunos/list/list';
+import { AlunoCreate } from './pages/alunos/create/create';
+import { AlunoEdit } from './pages/alunos/edit/edit';
+import { CursoList } from './pages/cursos/list/list';
+import { CursoCreate } from './pages/cursos/create/create';
+import { CursoEdit } from './pages/cursos/edit/edit';
 import { LivroCreate } from './pages/livros/create';
 import { LivroList } from './pages/livros/list';
-import { UsuarioCreate } from './pages/usuarios/create/create/create';
-import { UsuarioList } from './pages/usuarios/list/list/list';
+import { LivroEdit } from './pages/livros/edit';
+import { UsuarioList } from './pages/usuarios/list/list';
+import { UsuarioCreate } from './pages/usuarios/create/create';
+import { EmprestimoCreate } from './pages/emprestimos/create/create';
+import { EmprestimoList } from './pages/emprestimos/list/list';
+import { UsuarioEdit } from './pages/usuarios/edit/edit';
 
 export const routes: Routes = [
     { path: "categorias", component: CategoriaList },
@@ -17,9 +27,19 @@ export const routes: Routes = [
     { path: "autores", component: AutorList },
     { path: "autores/cadastrar", component: AutorCreate },
     { path: "autores/editar/:id", component: AutorEdit },
+    { path: "alunos", component: AlunoList },
+    { path: "alunos/cadastrar", component: AlunoCreate },
+    { path: "alunos/editar/:id", component: AlunoEdit },
+    { path: "cursos", component: CursoList },
+    { path: "cursos/cadastrar", component: CursoCreate },
+    { path: "cursos/editar/:id", component: CursoEdit },
     { path: "livros", component: LivroList },
     { path: "livros/cadastrar", component: LivroCreate },
-    { path: "livros", component: LivroList },
+    { path: "livros/editar/:id", component: LivroEdit },
     { path: "usuarios", component: UsuarioList },
     { path: "usuarios/cadastrar", component: UsuarioCreate },
+    { path: "emprestimos", component: EmprestimoList },
+    { path: "emprestimos/cadastrar", component: EmprestimoCreate },
+    { path: "usuarios/editar/:id", component: UsuarioEdit },
+
 ];

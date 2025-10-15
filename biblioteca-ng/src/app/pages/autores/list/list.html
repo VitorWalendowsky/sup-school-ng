@@ -1,38 +1,26 @@
-<div class="flex justify-content-end mr-2 mt-2">
-    <p-button label="Cadastrar" severity="info" icon="pi pi-plus" routerLink="cadastrar" />
-</div>
+<p-button label="Cadastrar" severity="info" icon="pi pi-plus" routerLink="cadastrar" />
 
-<div class="mr-2 mt-2 ml-2">
-    <p-table [value]="autores" [tableStyle]="{ 'min-width': '50rem' }">
-        <ng-template #header>
-            <tr>
-                <th>Código</th>
-                <th>Nome</th>
-                <th>Data de Nascimento</th>
-                <th>Nacionalidade</th>
-                <th></th>
-            </tr>
-        </ng-template>
-        <ng-template #body let-autor>
-            <tr>
-                <td>{{ autor.id }}</td>
-                <td>{{ autor.nome }}</td>
-                <td>{{ autor.dataNascimento | date:'dd/MM/yyyy' }}</td>
-                <td>{{ autor.nacionalidade }}</td>
-                <td class="flex gap-2">
-                    <p-button
-                        label="Editar"
-                        icon="pi pi-pencil"
-                        severity="warn"
-                        routerLink="/autores/editar/{{autor.id}}"/>
+<p-table [value]="autores" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template #header>
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Nacionalidade</th>
+            <th>Data de Nascimento</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-autor>
+        <tr>
+            <td>{{ autor.id }}</td>
+            <td>{{ autor.nome }}</td>
+            <td>{{ autor.nacionalidade }}</td>
+            <td>{{ autor.dataNascimento | date: 'dd/MM/yyyy' }}</td>
+            <td class="flex gap-2">
+                <p-button label="Editar" icon="pi pi-pencil" severity="warn" routerLink="/autores/editar/{{autor.id}}" />
 
-                    <p-button 
-                        (click)="apagar(autor.id)" 
-                        label="Apagar" 
-                        icon="pi pi-trash" 
-                        outlined severity="danger" /> 
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
-</div>
+                <p-button (click)="apagar(autor.id)" label="Apagar" icon="pi pi-trash" outlined severity="danger" />
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

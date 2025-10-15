@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { DatePickerModule } from 'primeng/datepicker';
-import { InputTextModule } from 'primeng/inputtext';
-import { SelectModule } from 'primeng/select';
-import { AutorCadastroRequest } from '../../../models/autor.dto';
+import { AutorCadastroRequest } from '../../../models/autor.dtos';
 import { AutorService } from '../../../services/autor.service';
 import { Router } from '@angular/router';
+import { Select } from 'primeng/select';
+import { InputTextModule } from 'primeng/inputtext';
+import { DatePicker } from 'primeng/datepicker';
 
 interface Nacionalidade {
   nome: string;
@@ -14,13 +14,7 @@ interface Nacionalidade {
 
 @Component({
   selector: 'app-create',
-  imports: [
-    FormsModule,
-    ButtonModule,
-    InputTextModule,
-    DatePickerModule,
-    SelectModule,
-  ],
+  imports: [FormsModule, ButtonModule, Select, InputTextModule, DatePicker],
   templateUrl: './create.html',
   styleUrl: './create.scss'
 })
@@ -54,12 +48,12 @@ export class AutorCreate {
   }
 
   salvar() {
-    this.autorService.create(this.form).subscribe({
-      next: _ => this.router.navigate(["/autores"]),
+    this.autorService.create(this.form).subscribe ({
+      next: sucesso => this.router.navigate(["/autores"]),
       error: erro => {
-        alert("Não foi possível cadastrar a autor");
-        console.error(erro);
+        alert("Não foi possível cadastrar o autor");
+        console.error("Ocorreu um erro ao cadastrar o autor: " + erro);
       }
     })
-  }
+   }
 }

@@ -88,9 +88,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/primeng/resources/themes/aura/theme.css",
-              "node_modules/primeng/resources/primeng.min.css"
+              "src/styles.scss"
             ]
           }
         }
@@ -98,6 +96,6 @@
     }
   },
   "cli": {
-    "analytics": "523b045d-37b2-422d-8fa9-8285a027682e"
+    "analytics": "960eb93c-4600-44da-abbd-20068717daef"
   }
 }

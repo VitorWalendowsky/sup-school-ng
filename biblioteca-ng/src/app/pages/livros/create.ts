@@ -1,9 +1,10 @@
+
 import { Component } from '@angular/core';
-import { LivroCadastroRequest } from '../../models/livro.dto';
+import { LivroCadastroRequest } from '../../models/livro.dtos';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputMask, InputMaskModule } from 'primeng/inputmask';
-import { AutorResponse } from '../../models/autor.dto';
+import { AutorResponse } from '../../models/autor.dtos';
 import { AutorService } from '../../services/autor.service';
 import { SelectModule } from 'primeng/select';
 import { CategoriaResponse } from '../../models/categoria.dto';
@@ -108,7 +109,7 @@ import { StepsModule } from 'primeng/steps';
                     view="year" 
                     dateFormat="yy"
                     fluid
-                    />
+                    appendTo="body"/>
                   
                 </div>
 
@@ -163,23 +164,17 @@ import { StepsModule } from 'primeng/steps';
             </ng-template>
           </p-step-panel>
         </p-step-panels>
-      </p-stepper>
-
-
-
-
-      
-
-    
+      </p-stepper> 
     </div>
   `,
   styles: ``,
-  providers: [MessageService, ],
+  providers: [MessageService,],
 })
 export class LivroCreate {
   form: LivroCadastroRequest;
 
   autores: AutorResponse[] | undefined;
+  
   categorias: CategoriaResponse[] | undefined;
 
   constructor(
@@ -189,14 +184,14 @@ export class LivroCreate {
     private messageService: MessageService,
   ) {
     this.form = {
-      titulo: "Harry Potter e a Camara Secreta",
-      resumo: "Sonseria e Grifinória são as únicas casas de HP",
-      descricao: "Livro de Magia",
-      anoPublicacao: new Date("1998-01-01"),
-      autorId: 44,
-      categoriaId: 52,
-      isbn: "129-3-1030-1230-8",
-      quantidade: 100
+      titulo: "",
+      resumo: "",
+      descricao: "",
+      anoPublicacao: null,
+      autorId: null,
+      categoriaId: null,
+      isbn: "",
+      quantidade: null
     }
   }
 
@@ -241,9 +236,9 @@ export class LivroCreate {
     })
   }
 
-  salvar(){
+  salvar() {
     this.livroService.create(this.form).subscribe({
-      next: () => 
+      next: () =>
         this.messageService.add({
           severity: "success",
           summary: "Sucesso",

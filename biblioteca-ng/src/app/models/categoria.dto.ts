@@ -1,4 +1,4 @@
-export interface CategoriaResponse{
+export interface CategoriaResponse {
     id: number;
     nome: string;
 }
@@ -10,11 +10,10 @@ Request (classe): é uma representação do que será enviado para o back-end
 Response => é o retorno do back-end (dados consultados de uma tabela)
 
 */
-export interface CategoriaCadastroRequest{
+export interface CategoriaCadastroRequest {
     nome: string;
 }
 
-
-export interface CategoriaEditarRequest{
+export interface CategoriaEditarRequest {
     nome: string;
 }

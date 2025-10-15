@@ -1,0 +1,33 @@
+<div class="flex justify-content-end mr-2 mt-2">
+    <p-button label="Cadastrar" severity="info" icon="pi pi-plus" routerLink="cadastrar" />
+</div>
+
+<p-table [value]="usuarios" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template #header>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template #body let-usuario>
+        <tr>
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.nome }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.telefone }}</td>
+            <td>{{ usuario.endereco }}</td>
+            <td>
+                <div class="gap-2">
+                    <p-button label="Editar" icon="pi pi-pencil" severity="warn"
+                        routerLink="/usuarios/editar/{{usuario.id}}" />
+
+                    <p-button label="Apagar" severity="danger" icon="pi pi-trash" (click)="apagar(usuario.id)" />
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

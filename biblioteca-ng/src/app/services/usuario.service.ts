@@ -1,33 +1,39 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AutorResponse } from '../models/autor.dto';
-import { UsuarioResponse, UsuarioCadastroRequest } from '../models/usuario.dto';
-
+import { UsuarioCadastrarRequest, UsuarioEditarRequest, UsuarioResponse } from '../models/usuario.dtos';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService{
-  url = "https://api.franciscosensaulas.com/api/v1/biblioteca/usuarios"
+export class UsuarioService {
+  url = "https://api.franciscosensaulas.com/api/v1/biblioteca/usuarios";
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { };
 
   getAll(): Observable<UsuarioResponse[]> {
     return this.httpClient.get<UsuarioResponse[]>(this.url);
   }
 
-  create(form: UsuarioCadastroRequest): Observable<void> {
+  create(form: UsuarioCadastrarRequest): Observable<void> {
     return this.httpClient.post<void>(this.url, form);
   }
 
-  delete(id: number): Observable<void> {
-    const urlApagar = `${this.url}/${id}`;
-    return this.httpClient.delete<void>(urlApagar);
+  getById(id: number): Observable<UsuarioResponse> {
+    const urlComId = `${this.url}/${id}`;
+
+    return this.httpClient.get<UsuarioResponse>(urlComId);
   }
 
-  getById(id: number): Observable<UsuarioResponse> {
-    const urlConsultarPorId = `${this.url}/${id}`;
-    return this.httpClient.get<UsuarioResponse>(urlConsultarPorId);
+  update(id: number,form: UsuarioEditarRequest): Observable<void> {
+    const urlParaEditar = `${this.url}/${id}`;
+
+    return this.httpClient.put<void>(urlParaEditar, form);
+  }
+
+  delete(id:number): Observable<void> {
+    const urlParaEditar = `${this.url}/${id}`;
+
+    return this.httpClient.delete<void>(urlParaEditar);
   }
 }

@@ -1,0 +1,13 @@
+<label for="campo-nome">Nome:</label>
+<input id="nome" type="text" pInputText [(ngModel)]="form.nome" />
+
+<label for="campo-sobrenome">Sobrenome:</label>
+<input id="sobrenome" type="text" pInputText [(ngModel)]="form.sobrenome" />
+
+<label for="campo-cpf">CPF:</label>
+<p-inputmask id="cpf" mask="999.999.999-99" [(ngModel)]="form.cpf" placeholder="000.000.000-00" />
+
+<label for="campo-nascimento">Data de Nascimento:</label>
+<p-datepicker id="nascimento" [(ngModel)]="form.dataNascimento" dateFormat="dd/mm/yy" />
+
+<p-button label="Salvar" (click)="salvarALuno()"/>
