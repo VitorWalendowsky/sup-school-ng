@@ -7,6 +7,18 @@ import { EmprestimoCadastrarRequest, EmprestimoResponse } from '../models/empres
   providedIn: 'root'
 })
 export class EmprestimosService {
+  obterPorId(id: number) {
+    throw new Error('Method not implemented.');
+  }
+  cadastrar(req: EmprestimoCadastrarRequest) {
+    throw new Error('Method not implemented.');
+  }
+  apagar(id: any) {
+    throw new Error('Method not implemented.');
+  }
+  delete(id: number) {
+    throw new Error('Method not implemented.');
+  }
   url = "https://api.franciscosensaulas.com/api/v1/biblioteca/emprestimos";
 
   constructor(private httpClient: HttpClient) { };

@@ -7,6 +7,9 @@ import { UsuarioCadastrarRequest, UsuarioEditarRequest, UsuarioResponse } from '
   providedIn: 'root'
 })
 export class UsuarioService {
+  listar() {
+    throw new Error('Method not implemented.');
+  }
   url = "https://api.franciscosensaulas.com/api/v1/biblioteca/usuarios";
 
   constructor(private httpClient: HttpClient) { };

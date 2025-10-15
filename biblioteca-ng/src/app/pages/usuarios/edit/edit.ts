@@ -1,66 +1,85 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
-import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
-import { UsuarioEditarRequest } from '../../../models/usuario.dtos';
+import { MessageService } from 'primeng/api';
 import { UsuarioService } from '../../../services/usuario.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { UsuarioCadastrarRequest, UsuarioResponse } from '../../../models/usuario.dtos';
+
 
 @Component({
-  selector: 'app-edit',
+  selector: 'app-usuario-edit',
+  templateUrl: './edit.html',
+  styleUrls: ['./edit.scss'],
   imports: [
+    CommonModule,
     FormsModule,
     ButtonModule,
-    InputMaskModule,
-    InputTextModule,
+    InputTextModule
   ],
-  templateUrl: './edit.html',
-  styleUrl: './edit.scss'
+  providers: [MessageService]
 })
 export class UsuarioEdit {
-  form: UsuarioEditarRequest;
+  usuario: UsuarioCadastrarRequest = {
+    nome: '',
+    email: '',
+    telefone: '',
+    endereco: ''
+  };
 
-  id: number;
+  carregando = false;
+  usuarioId!: number;
+form: any;
 
   constructor(
     private usuarioService: UsuarioService,
+    private route: ActivatedRoute,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-  ) {
-    this.form = {
-      nome: "",
-      email: "",
-      telefone: "",
-      endereco: ""
+    private messageService: MessageService
+  ) {}
+
+  ngOnInit() {
+    this.usuarioId = Number(this.route.snapshot.paramMap.get('id'));
+    if (this.usuarioId) {
+      this.carregarUsuario(this.usuarioId);
     }
-
-    this.id = parseInt(this.activatedRoute.snapshot.paramMap.get("id")!.toString());
-
-    this.carregarUsuario();
   }
 
-  private carregarUsuario() {
-    this.usuarioService.getById(this.id).subscribe({
-      next: usuario => {
-        this.form.nome = usuario.nome;
-
-        this.form.email = usuario.email;
-
-        this.form.endereco = usuario.endereco;
-
-        this.form.telefone = usuario.telefone;
+  carregarUsuario(id: number) {
+    this.carregando = true;
+    this.usuarioService.getById(id).subscribe({
+      next: (res: UsuarioResponse) => {
+        this.usuario = {
+          nome: res.nome,
+          email: res.email,
+          telefone: res.telefone,
+          endereco: res.endereco
+        };
+        this.carregando = false;
+      },
+      error: (erro) => {
+        this.carregando = false;
+        alert('Não foi possível carregar o usuário.');
+        console.error('Erro ao carregar usuário:', erro);
       }
-    })
+    });
   }
 
   salvar() {
-    this.usuarioService.update(this.id,this.form).subscribe({
-      next: sucesso => this.router.navigate(["/usuarios"]),
-      error: erro => {
-        alert("Não foi possível fazer a atualização do usuário.");
-        console.log("Ocorreu um erro ao tentar atualizar o usuário: " + erro);
+    this.carregando = true;
+    this.usuarioService.update(this.usuarioId, this.usuario).subscribe({
+      next: () => {
+        this.carregando = false;
+        this.messageService.add({ severity: 'success', summary: 'Sucesso', detail: 'Usuário atualizado!' });
+        this.router.navigate(['/usuarios']);
+      },
+      error: (erro) => {
+        this.carregando = false;
+        this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'Falha ao atualizar usuário.' });
+        console.error('Erro ao atualizar usuário:', erro);
       }
-    })
+    });
   }
 }

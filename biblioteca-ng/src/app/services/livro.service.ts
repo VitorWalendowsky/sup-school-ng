@@ -7,6 +7,9 @@ import { LivroCadastroRequest, LivroEditarRequest, LivroResponse } from '../mode
   providedIn: 'root'
 })
 export class LivroService {
+  listar() {
+    throw new Error('Method not implemented.');
+  }
   url = "https://api.franciscosensaulas.com/api/v1/biblioteca/livros"
 
   constructor(private httpClient: HttpClient) { }
